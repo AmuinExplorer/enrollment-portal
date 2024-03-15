@@ -32,6 +32,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 // MONGO DB CONNECTION
 
+// Define a route for the root URL '/'
+app.get('/', (req, res) => {
+  // Use path module to construct the absolute path to your HTML file
+  const htmlPath = path.join(__dirname, '../views', 'index.html');
+  // Send the HTML file as the response
+  res.sendFile(htmlPath);
+});
+
 app.post('/upload', async (req, res) => {
   const details = req.body; // No need for await here
 
